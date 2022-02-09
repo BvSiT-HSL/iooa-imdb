@@ -12,54 +12,49 @@ public class TvShow {
 
     //Maak de juiste constructor, onthoud niet alle attributen hoeven hier aan meegegeven te worden!
 
-
     public TvShow(String naam, Genre genre) {
         this.naam = naam;
         this.genre = genre;
+        beoordelingen = new ArrayList<>();
     }
 
     public void geefRating(double cijfer){
         //Voeg beoordeling toe aan de beoordelignen lijst
         //herbereken nu het gemiddelde met de berekenGemiddeldeCijfer functie
+        beoordelingen.add(cijfer);
+        berekenGemiddeldCijfer(); //?? Beter in getGemiddeldeRating
     }
 
     private void berekenGemiddeldCijfer(){
         //bereken het gemiddelde cijfer aan de hand van de beoordelingen lijst zet vervolgens
         // dit gemiddelde op het attribuut gemiddeldeRating
+
+        //TODO double not set = 0?
+
+        double totalOfRatings = 0;
+        int numOfRatings = beoordelingen.size();
+        for (Double rating : beoordelingen){
+            totalOfRatings+=rating;
+        }
+        if (numOfRatings>0) gemiddeldeRating=totalOfRatings/numOfRatings;
+
     }
 
     //Maak getters en setters van de benodigde attributen, dus niet allemaal!!
-
-
     public String getNaam() {
         return naam;
-    }
-
-    public void setNaam(String naam) {
-        this.naam = naam;
     }
 
     public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
     public double getGemiddeldeRating() {
         return gemiddeldeRating;
-    }
-
-    public void setGemiddeldeRating(double gemiddeldeRating) {
-        this.gemiddeldeRating = gemiddeldeRating;
     }
 
     public ArrayList<Double> getBeoordelingen() {
         return beoordelingen;
     }
 
-    public void setBeoordelingen(ArrayList<Double> beoordelingen) {
-        this.beoordelingen = beoordelingen;
-    }
 }
